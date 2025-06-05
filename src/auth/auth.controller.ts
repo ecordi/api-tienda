@@ -5,6 +5,7 @@ import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { LogoutDto } from './dto/logout.dto';
 import { Public } from './decorators/public.decorator';
 
 @ApiTags('auth')
@@ -97,7 +98,9 @@ export class AuthController {
   @Post('logout')
   @ApiOperation({ summary: 'Cerrar sesión' })
   @ApiResponse({ status: 200, description: 'Sesión cerrada correctamente' })
-  logout(@Body('userId') userId: string) {
-    return this.authService.logout(userId);
+  @ApiResponse({ status: 400, description: 'Datos inválidos' })
+  @ApiResponse({ status: 404, description: 'Usuario no encontrado' })
+  logout(@Body() logoutDto: LogoutDto) {
+    return this.authService.logout(logoutDto.userId);
   }
 }

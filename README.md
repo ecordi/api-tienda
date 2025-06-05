@@ -2,6 +2,20 @@
 
 Este proyecto es un microservicio RESTful desarrollado con NestJS (TypeScript) y MySQL usando TypeORM para la gestión de artículos.
 
+## Entorno de Producción
+
+La API está desplegada y disponible en:
+
+```
+https://api-tienda-production-9f45.up.railway.app
+```
+
+Documentación Swagger en producción:
+
+```
+https://api-tienda-production-9f45.up.railway.app/api
+```
+
 ## Características
 
 - CRUD completo para la entidad Artículo

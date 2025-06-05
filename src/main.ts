@@ -18,6 +18,8 @@ async function bootstrap() {
     .setTitle('Tienda API')
     .setDescription('API para gestión de artículos')
     .setVersion('1.0')
+    .addServer('https://api-tienda-production-9f45.up.railway.app', 'Servidor de Producción')
+    .addServer('http://localhost:3000', 'Servidor Local')
     .addBearerAuth()
     .build();
   

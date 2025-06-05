@@ -177,6 +177,12 @@ export class AuthService {
   }
 
   async logout(userId: string) {
+    // Verificar que el usuario existe
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new NotFoundException(`Usuario con ID ${userId} no encontrado`);
+    }
+    
     // Clear refresh token
     await this.userRepository.update(userId, { refreshToken: '' });
     return { message: 'Sesión cerrada correctamente' };

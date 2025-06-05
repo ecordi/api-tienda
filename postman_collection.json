@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "a5c1b3d2-e4f6-4a7b-8c9d-0e1f2a3b4c5d",
     "name": "Tienda API - Articulos",
-    "description": "API para la gestión de artículos con autenticación JWT",
+    "description": "API para la gestión de artículos con autenticación JWT\n\n## Environments\n\n### Local Environment\n- base_url: http://localhost:3000\n\n### Production Environment\n- base_url: https://api-tienda-production-9f45.up.railway.app\n\nPara cambiar entre entornos, selecciona el environment correspondiente en Postman.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -451,7 +451,14 @@
     {
       "key": "base_url",
       "value": "http://localhost:3000",
-      "type": "string"
+      "type": "string",
+      "description": "URL local para desarrollo"
+    },
+    {
+      "key": "production_url",
+      "value": "https://api-tienda-production-9f45.up.railway.app",
+      "type": "string",
+      "description": "URL de producción en Railway"
     },
     {
       "key": "token",
