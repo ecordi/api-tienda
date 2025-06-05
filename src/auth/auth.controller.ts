@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, Put, Delete, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Put, Delete, ParseUUIDPipe, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
@@ -7,6 +7,7 @@ import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { LogoutDto } from './dto/logout.dto';
 import { Public } from './decorators/public.decorator';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -62,6 +63,7 @@ export class AuthController {
   // Endpoints de gestión de usuarios
 
   @Get('users')
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Obtener todos los usuarios' })
   @ApiResponse({ status: 200, description: 'Lista de usuarios' })
   findAll() {
@@ -69,6 +71,7 @@ export class AuthController {
   }
 
   @Get('users/:id')
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Obtener un usuario por ID' })
   @ApiResponse({ status: 200, description: 'Usuario encontrado' })
   @ApiResponse({ status: 404, description: 'Usuario no encontrado' })
@@ -77,6 +80,7 @@ export class AuthController {
   }
 
   @Put('users/:id')
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Actualizar un usuario' })
   @ApiResponse({ status: 200, description: 'Usuario actualizado' })
   @ApiResponse({ status: 404, description: 'Usuario no encontrado' })
@@ -88,6 +92,7 @@ export class AuthController {
   }
 
   @Delete('users/:id')
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Desactivar un usuario' })
   @ApiResponse({ status: 200, description: 'Usuario desactivado' })
   @ApiResponse({ status: 404, description: 'Usuario no encontrado' })
@@ -96,6 +101,7 @@ export class AuthController {
   }
 
   @Post('logout')
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Cerrar sesión' })
   @ApiResponse({ status: 200, description: 'Sesión cerrada correctamente' })
   @ApiResponse({ status: 400, description: 'Datos inválidos' })
