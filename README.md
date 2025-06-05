@@ -15,6 +15,11 @@ Documentación Swagger en producción:
 ```
 https://api-tienda-production-9f45.up.railway.app/api
 ```
+Documentación Postman en producción:
+
+```
+https://www.postman.com/bold-rocket-448925/tienda/collection/yi7l8ae/tienda-api-articulos
+```
 
 ## Características
 
